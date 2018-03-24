@@ -1,0 +1,56 @@
+priority_queue<int, vector<int>, greater<int>> right;
+struct TrieNode{
+    vector<TrieNode*> child;
+    string word;
+    TrieNode() : word(""), child(vector<TrieNode *>(26, nullptr)) {}
+};
+ vector<vector<int>> dis(m, vector<int>(n, INT_MAX));
+
+ queue.front();
+ queue.pop();
+ queue.push();
+ queue<pair<int, int>> q;
+ q.push({start[0], start[1]});
+
+stack.top();
+stack.pop();
+stack.push();
+
+deque.push_back();
+deque.push_front();
+deque.pop_back();
+deque.poo_front();
+deque.front();
+deque.back();
+
+deque.erase(pointer);
+pointer can be begin(), end(), rbegin();
+
+set :lower_bound() first element larger or equal to the element;
+set: upper_bound() first element larger to the given element;
+
+a.insert(a.end(), b.begin(), b.end());
+
+ vector<Interval> merge(vector<Interval>& intervals) {
+        if(intervals.empty()) return vector<Interval>{};
+        vector<Interval> res;
+        sort(intervals.begin(), intervals.end(), [](Interval a, Interval b){return a.start < b.start;});
+        res.push_back(intervals[0]);
+        for(int i = 1; i < intervals.size(); i++){
+            if(res.back().end < intervals[i].start) res.push_back(intervals[i]);
+            else{
+                res.back().end = max(res.back().end, intervals[i].end);
+            }
+        }
+        return res;
+     }
+
+struct CustomCompare
+{
+    bool operator()(const int& lhs, const int& rhs)
+    {
+        return lhs < rhs;
+    }
+};
+priority_queue<int,vector<int>, CustomCompare > pq;
+
