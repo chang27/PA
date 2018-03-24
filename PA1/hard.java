@@ -1,39 +1,6 @@
 // regex:
 public boolean isMatch(String s, String p) {
-    if(p.length() == 0){
-        return s.length() == 0;
-
-    }
-    if(p.length() == 1){
-        return (s.length() == 1 && ((s.charAt(0) == p.charAt(0)) || p.charAt(0) == '.'));
-    }
-    if(p.charAt(i) != '*'){
-        if (s.length() < 1){
-            return false;
-        }
-        if((p.charAt(0) != s.charAt(0)) && (p.charAt(0) != '.')){
-            return false;
-        }else{
-            return isMatch(s.substring(1), p.substring(1));
-        }
-    }
-    else {
-        if(isMatch(s, p.substring(2))) return true;
-        int i = 0;
-        while(i < s.length() && (s.charAt(i) == p.charAt(0) || p.charAt(0) == '.')){
-            if(isMatch(s.substring(i+1), p.substring(2))){
-                return true;
-            }
-            i++;
-        }
-        return false;
-    }
-    //or
-    while(!s.isEmpty() && (s.charAt(0) == p.charAt(0) || p.charAt(0) == '.')){
-        if(isMatch(s, p.substring(2))) return true;
-        s = s.substring(1);
-    }
-    return isMatch(s, p.substring(2));
+that is back tracking
 }
 //dp solution:
 
@@ -1467,7 +1434,7 @@ private boolean isValid(int[] nums, int m, int mid){
         
         return (minright + maxleft)/2.0 ;
     }
-//关于中位数： 如果几数个： (n-1)/2， n/2 也可以 就是index。 
+//关于中位数： 如果奇数个： (n-1)/2， n/2 也可以 就是index。 
 // 如果是偶数个： （n-1）／2 是前一个，n/2是后一个
  // 所以不分奇偶的时候可以用（n-1）／2 比较好来表示第一个index。如果分奇偶的话，就用两个表示。
 public double findMedianSortedArrays(int[] nums1, int[] nums2){

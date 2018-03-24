@@ -915,7 +915,7 @@ public class Solution {
         inorder(node.right);
     }
 
-public List<Integer> postorderTraversal(TreeNode root) {
+public List<Integer> inorderTraversal(TreeNode root) {
 	List<Integer> res = new ArrayList<>();
 	if(root == null) return res;
 	Stack<TreeNode> stack = new Stack<>();
@@ -923,11 +923,11 @@ public List<Integer> postorderTraversal(TreeNode root) {
 	while(!stack.isEmpty() || p != null){
 		if(p != null){
 			stack.push(p);
-			//res.add(n.val);
+			//res.add(n.val); this is preorder
 			p = p.left;
 		}else{
 		TreeNode n = stack.pop();
-		res.add(n.val);//
+		res.add(n.val);// this is inorder
 		p = n.right;
 	}
 }
@@ -974,3 +974,100 @@ public List<Integer> postorderTraversal(TreeNode root){
 	}
 return res;
 }  
+
+
+public void printLevelTree(TreeNode root, int level){
+	if(root == null) return;
+	if(level == 0){
+		System.out.println(root.val);
+	}else{
+		printLevelTree(root.left, level -1);
+		printLevelTree(root.right, level -1);
+	}
+}
+
+public static void main(String[] args){
+	int n = depth(root);
+	for(int i = 0; i < n){
+		printLevelTree(root, i);
+	}
+}
+
+public int depth(TreeNode root){
+	if(root == null) return 0;
+	return Math.max(depth(root.left), depth(root,right) ) + 1;
+}
+class Solution {
+    int max = Integer.MIN_VALUE;
+    public int maxPathSum(TreeNode root) {
+        if(root == null) return 0;
+        helper(root);
+        return max;
+        
+    }
+    private int helper(TreeNode root) {
+        if(root == null) return 0;
+        int left = Math.max(0, helper(root.left));
+        int right = Math.max(0, helper(root.right));
+        max = Math.max(max, left + right + root.val);
+        return Math.max(left, right) + root.val;
+    }
+}
+public void serialize(TreeNode root, StringBuilder out)  {
+		 if  (root != null)  {
+			 out.append('(');
+			 out.append(root.val);
+			 for  (TreeNode child : root.getChildren())  {
+				 serialize(child, out);
+			 }
+			 out.append(')');
+		 }		 
+	 }
+	 TreeNode deserialize(StringBuilder in) {
+	 if  (0  <  in.length()) {			 
+	     if (in.charAt(0)  ==  '(') {
+		 in.deleteCharAt(0);
+		 TreeNode node = new TreeNode(in.charAt(0) - '0');
+		 in.deleteCharAt(0);
+		 while  (in.charAt(0)  !=  ')') {					 
+			 node.add(deserialize(in));	
+		 }		
+		 in.deleteCharAt(0);
+		 return node;
+		 }		 
+	  }
+	 return null;
+ }
+
+ public class Solution {
+    class TreeNode{. 1point3acres.com/bbs
+        TreeNode left, right;
+        int val;
+        public TreeNode(int val) {
+            this.val = val;. visit 1point3acres.com for more.
+        }
+    }
+    
+    public List<TreeNode[]> findNodePair (TreeNode root) {
+        Map<String, List<TreeNode>> map = new HashMap<>();
+        List<TreeNode[]> res = new ArrayList<>(); 
+        serialize(res, map, root);
+        return res;
+    }
+
+    private String serialize(List<TreeNode[]> res, Map<String, List<TreeNode>> map, TreeNode root) {-google 1point3acres
+        if(root == null) {
+            return "[]";
+        }. more info on 1point3acres.com
+        String s = "[" + root.val + serialize(res, map, root.left) + serialize(res, map, root.right) + "]";. 鐣欏鐢宠璁哄潧-涓€浜╀笁鍒嗗湴
+        if (map.containsKey(s)) {
+            for (TreeNode n : map.get(s)) {
+                res.add(new TreeNode[]{root, n});
+            }
+        } else {
+            map.put(s, new ArrayList<>());
+        }
+        map.get(s).add(root);
+        return s;
+    }
+}

@@ -1,4 +1,6 @@
 priority_queue<int, vector<int>, greater<int>> right;
+ vector<vector<int>> dir{{-1, 0}, {0, 1}, {0, -1}, {1, 0}};
+sort(courses.begin(), courses.end(), [](vector<int> &v1, vector<int> &v2){return v1[1] < v2[1];});
 struct TrieNode{
     vector<TrieNode*> child;
     string word;
@@ -7,6 +9,7 @@ struct TrieNode{
  vector<vector<int>> dis(m, vector<int>(n, INT_MAX));
 
  queue.front();
+ queue.back();
  queue.pop();
  queue.push();
  queue<pair<int, int>> q;
@@ -15,6 +18,17 @@ struct TrieNode{
 stack.top();
 stack.pop();
 stack.push();
+
+priority_queue.top()
+push();
+pop();
+
+struct compC{
+    bool operator()(pair<int, int> &a, pair<int, int> &b) {
+        return a.first > b.first;
+    }
+};
+priority_queue<pair<int, int>, vector<pair<int, int>>, compC> cap; // minheap
 
 deque.push_back();
 deque.push_front();
@@ -52,5 +66,11 @@ struct CustomCompare
         return lhs < rhs;
     }
 };
+
+
 priority_queue<int,vector<int>, CustomCompare > pq;
+stringstream in(string);
+    string val;
+       // in >> val;
+        getline(in, val, ',');
 

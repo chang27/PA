@@ -1,0 +1,25 @@
+
+vector<TreeNode*> splitTree(TreeNode *root){
+	if(root == NULL) return {};
+	vector<TreeNode*> res;
+	res.push(root);
+	dfs(root, res);
+	return res;
+}
+
+void dfs(TreeNode * root, vector<TreeNode*> & res){
+	if(root ==NULL) return;
+	dfs(root -> left, res);
+	dfs(root -> right, res);
+	if(root -> left == X){
+		res.push(root -> left);
+		root -> left = new TreeNode(X);
+	}
+	if(root -> right == X){
+		res.push(root -> right);
+		root -> right = new TreeNode(X);
+	}
+}
+
+list.toArray(new String[list.size()]);  res.stream().mapToInt(i->i).toArray();
+String.join("", sb);
